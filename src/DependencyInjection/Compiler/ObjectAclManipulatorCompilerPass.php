@@ -30,6 +30,8 @@ final class ObjectAclManipulatorCompilerPass implements CompilerPassInterface
         $availableManagers = [];
 
         foreach ($container->getServiceIds() as $id) {
+            $id = (string)$id;
+
             if (0 !== strpos($id, 'sonata.admin.manipulator.acl.object.') || !is_subclass_of($container->getDefinition($id)->getClass(), ObjectAclManipulatorInterface::class)) {
                 continue;
             }
